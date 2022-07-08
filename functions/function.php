@@ -53,9 +53,16 @@ function recherche($dbh,$mot){
 	LEFT OUTER JOIN genres ON genres_id=fg_genres_id     
 	JOIN films_acteurs ON fa_films_id=films_id     
 	JOIN acteurs ON acteurs_id=fa_acteurs_id 
+    WHERE films_titre LIKE '%$mot%'
+    OR films_annee LIKE '%$mot'
+    OR genres_nom LIKE '%$mot%'
+    OR real_nom LIKE '%$mot%'
+    OR acteurs_nom LIKE '%$mot%'
+    OR films_resume LIKE '%$mot%'
+    OR films_affiche LIKE '%$mot%'
+
 	GROUP BY films_titre
-	ORDER BY films_id;
-	";
+	ORDER BY films_id";
 	$stmt = $dbh -> prepare($sql);
         //faire binParam() ou bindValue() si paramètres
         //3. Exécution de la requête
