@@ -1,0 +1,16 @@
+.header{
+	background-color: #14487a;
+	background-image: url('./images/header.jpg');
+	background-repeat: no-repeat;
+	background-position: 250px;
+	padding: 30px;
+	box-shadow: 0px 5px 10px black;
+}
+
+.recherche{
+	text-align: center;
+}
+
+.films{
+
+}
