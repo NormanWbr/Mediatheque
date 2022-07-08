@@ -39,7 +39,9 @@ function select($dbh,$min,$max){
         return $dbh;
     }
 
-function recherche($dbh){
+function recherche($dbh,$mot){
+
+	$mot=$mot;
 
 	$sql = "
 	SELECT films_id,films_affiche,films_titre,

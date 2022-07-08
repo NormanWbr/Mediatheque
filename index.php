@@ -42,7 +42,7 @@ try{
 	if (!$recherche) {
 		$dbh = select($dbh,$min,$max);
 	}else{
-		$dbh = recherche($dbh);
+		$dbh = recherche($dbh,$mot);
 		$cpt = count($dbh);
 	}
 	// toutes les interactions avec la DB doivent se faire dans le try

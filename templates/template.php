@@ -50,7 +50,7 @@ function afficher($dbh){
 	<div class="header">
 		<form class="recherche" action="index.php" method="POST">
 			<input type="text" name="recherche" placeholder="Rechercher un film...">
-			<input class="submit" type="submit" name="action" value="Chercher">
+			<input type="submit" name="action" value="Chercher">
 		</form>
 	</div>
 
@@ -65,11 +65,13 @@ function afficher($dbh){
 			</p>
 			";
 		}else{
+			$pageplus = $page+1;
+			$pagemoins = $page-1;
 			echo "
 			<p>
-			<a href='index.php?page=$page--'>Précédent</a>
+			<a href='index.php?page={$pagemoins}'>Précédent</a>
 			Page $page sur $nbr
-			<a href='index.php?page=$page++'>Suivant</a>
+			<a href='index.php?page={$pageplus}'>Suivant</a>
 			</p>
 			";
 		}
