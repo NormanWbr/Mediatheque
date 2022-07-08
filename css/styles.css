@@ -11,6 +11,16 @@
 	text-align: center;
 }
 
-.films{
+.navig{
+	text-align: center;
+}
 
+.films{
+	box-shadow: 5px 5px 10px darkgray;
+	max-width: 80%;
+	margin: 0 auto;
+}
+
+.affiche{
+	max-width: 10%;
 }

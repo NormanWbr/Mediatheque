@@ -14,7 +14,7 @@ function connect(){
 	return $dbh;
 }
 
-function select($dbh){
+function select($dbh,$min,$max){
 	$sql = "
 	SELECT films_id,films_affiche,films_titre,
 	group_concat(distinct genres_nom) AS genres,real_nom,
@@ -26,7 +26,7 @@ function select($dbh){
 	JOIN films_acteurs ON fa_films_id=films_id     
 	JOIN acteurs ON acteurs_id=fa_acteurs_id 
 	GROUP BY films_titre
-	ORDER BY films_id;
+	ORDER BY films_id limit $min,$max;
 	";
 	$stmt = $dbh -> prepare($sql);
         //faire binParam() ou bindValue() si paramètres

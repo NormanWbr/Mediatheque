@@ -16,7 +16,8 @@ function afficher($dbh){
 		$affiche = $row['films_affiche'];
 
 		echo "
-		<img src='images/{$affiche}''>
+		<div class='films'>
+		<img class='affiche' src='images/{$affiche}''>
 		<h2>{$titre}</h2>
 		<p>{$annee}</p>
 		<p>{$genres}</p>
@@ -24,6 +25,7 @@ function afficher($dbh){
 		<p>Acteurs : {$acteurs}</p>
 		<p>Durée : {$heures}h{$minutes}</p>
 		<p>{$resume}</p>
+		</div>
 		";
 
 	}
@@ -53,14 +55,14 @@ function afficher($dbh){
 	</div>
 
 	<div class="navig">
+
 		<p>
-			<a href="prec">Précedent</a>
-			Page 1 sur 7
-			<a href="suiv">Suivant</a>
+			<a href="index.php?min=<?php echo ($min-10);?>&max=<?php echo ($max-10);?>">Précédent</a>
+			Page <?php echo ($min/10) ?> sur 7
+			<a href="index.php?min=<?php echo ($min+10);?>&max=<?php echo ($max+10);?>">Suivant</a>
+
 		</p>
-	</div>
-	<div>
-		<?php afficher($dbh); ?>
-	</div>
+</div>
+		<?php afficher($dbh,$min,$max); ?>
 </body>
 </html>
