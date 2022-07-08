@@ -50,19 +50,32 @@ function afficher($dbh){
 	<div class="header">
 		<form class="recherche" action="index.php" method="POST">
 			<input type="text" name="recherche" placeholder="Rechercher un film...">
-			<input type="submit" name="action" value="Chercher">
+			<input class="submit" type="submit" name="action" value="Chercher">
 		</form>
 	</div>
 
 	<div class="navig">
 
-		<p>
-			<a href="index.php?min=<?php echo ($min-10);?>&max=<?php echo ($max-10);?>">Précédent</a>
-			Page <?php echo ($min/10) ?> sur 7
-			<a href="index.php?min=<?php echo ($min+10);?>&max=<?php echo ($max+10);?>">Suivant</a>
+		<?php
 
-		</p>
-</div>
-		<?php afficher($dbh,$min,$max); ?>
+		if ($recherche) {
+			echo "
+			<p>
+			$cpt résultats pour $mot
+			</p>
+			";
+		}else{
+			echo "
+			<p>
+			<a href='index.php?page=$page--'>Précédent</a>
+			Page $page sur $nbr
+			<a href='index.php?page=$page++'>Suivant</a>
+			</p>
+			";
+		}
+
+		?>
+	</div>
+	<?php afficher($dbh); ?>
 </body>
 </html>

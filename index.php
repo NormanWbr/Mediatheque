@@ -2,26 +2,49 @@
 
 require_once('functions/function.php');
 
-if (isset($_GET['min'])) {
-	if ($_GET['min']<>-10) {
-		$min = $_GET['min'];
-	}
+if (isset($_POST['action'])) {
+	$recherche = true;
 }else{
-	$min=0;
+	$recherche = false;
 }
 
-if (isset($_GET['max'])) {
-	if ($_GET['max']<>0) {
-		$max = $_GET['max'];
-	}
+if (isset($_POST['recherche'])) {
+	$mot = $_POST['recherche'];
 }else{
-	$max=10;
+	$mot="";
 }
 
 try{
 
+	$min=0;
+	$max=999999999;
+	
 	$dbh = connect();
-	$dbh = select($dbh,$min,$max);
+
+	$nbr = ceil(count(select($dbh,$min,$max))/10);
+
+	if (isset($_GET['page'])) {
+		$page = $_GET['page'];
+	}else{
+		$page=1;
+	}
+
+	if ($page == 0) {
+		$page = 1;
+	}
+	if ($page > $nbr) {
+		$page = $nbr;
+	}
+
+	$max = $page*10;
+	$min = $max-10;
+
+	if (!$recherche) {
+		$dbh = select($dbh,$min,$max);
+	}else{
+		$dbh = recherche($dbh);
+		$cpt = count($dbh);
+	}
 	// toutes les interactions avec la DB doivent se faire dans le try
 
 }catch (Exception $ex) {
