@@ -15,13 +15,13 @@ if (isset($_POST['recherche'])) {
 }
 
 try{
-
-	$min=0;
-	$max=999999999;
 	
 	$dbh = connect();
 
-	$nbr = ceil(count(select($dbh,$min,$max))/10);
+	$min=0;
+	$max=count(selectAll($dbh));
+
+	$maxPage = ceil(count(selectAll($dbh))/10);
 
 	if (isset($_GET['page'])) {
 		$page = $_GET['page'];
@@ -32,8 +32,8 @@ try{
 	if ($page == 0) {
 		$page = 1;
 	}
-	if ($page > $nbr) {
-		$page = $nbr;
+	if ($page > $maxPage) {
+		$page = $maxPage;
 	}
 
 	$max = $page*10;

@@ -70,7 +70,7 @@ function afficher($dbh){
 			echo "
 			<p>
 			<a href='index.php?page={$pagemoins}'>Précédent</a>
-			Page $page sur $nbr
+			Page $page sur $maxPage
 			<a href='index.php?page={$pageplus}'>Suivant</a>
 			</p>
 			";
