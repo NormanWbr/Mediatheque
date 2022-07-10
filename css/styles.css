@@ -1,3 +1,7 @@
+body{
+	font-family: arial, sans-serif;
+}
+
 .header{
 	background-color: #14487a;
 	background-image: url('./images/header.jpg');
@@ -11,14 +15,6 @@
 	text-align: center;
 }
 
-.navig input{
-	text-align: center;
-}
-
-.navig{
-	text-align: center;
-}
-
 .films{
 	box-shadow: 5px 5px 10px darkgray;
 	max-width: 80%;
@@ -27,4 +23,24 @@
 
 .affiche{
 	max-width: 10%;
+}
+
+.nav {
+  list-style-type: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav li {
+  display: inline-block;
+  font-size: 20px;
+  padding: 50px;
+  padding-left: 250px;
+  padding-right: 250px;
+}
+
+a{
+	text-decoration: none;
+	color: #14487a;
 }

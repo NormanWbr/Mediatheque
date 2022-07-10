@@ -60,7 +60,7 @@ function afficher($dbh){
 
 		if ($recherche) {
 			echo "
-			<p>
+			<p class='nav'>
 			$cpt résultats pour $mot
 			</p>
 			";
@@ -69,9 +69,11 @@ function afficher($dbh){
 			$pagemoins = $page-1;
 			echo "
 			<p>
-			<a href='index.php?page={$pagemoins}'>Précédent</a>
+			<ul class='nav'>
+			<li><a href='index.php?page={$pagemoins}'>Précédent</a></li>
 			Page $page sur $maxPage
-			<a href='index.php?page={$pageplus}'>Suivant</a>
+			<li><a href='index.php?page={$pageplus}'>Suivant</a></li>
+			</ul>
 			</p>
 			";
 		}
